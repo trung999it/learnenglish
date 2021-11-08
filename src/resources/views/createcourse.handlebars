@@ -1,0 +1,118 @@
+<div class="container-account">
+    <div class="left-container-account">
+        {{#if avatar}}
+            <img src="image/default-avatar.png" alt="avatar" class="avatar-account">
+        {{else}}
+            <img class="avatar-account" src="{{img}}" alt="avatar">  
+        {{/if}}
+        
+        <h4>{{firstname}} {{lastname}}</h4>
+        <p>{{email}}</p>
+         <ul>
+             <li><a href="/account">My Info</a></li>
+             <li><a href="/aboutcreatecourse">How to create course?</a></li>
+             <li><a href="/coursemanagement">Course Management</a></li>
+             <li><a href="/changepassword">Change Password</a></li>
+             <li><a href="/updateavatar">Change Avatar</a></li>
+         </ul>
+    </div>
+    <div class="right-container-course-management">
+        <button class="btn btn-outline-secondary" id="btncreatecoursemodal" data-bs-toggle="modal" data-bs-target="#staticBackdropcreatecourse">Create Course</button>
+        <h2>My Course</h2>
+        <div class="list-course-teacher">
+          {{#each course}}
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{this.courseimage}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title" >{{this.coursename}}</h5>
+              <p>{{../firstname}} {{../lastname}}</p>
+              <p>{{this.author}}</p>
+              <p class="card-text">{{this.description}}</p>
+              <a href="coursemanagement/{{this._id}}" class="btn btn-primary">Course Detail</a>
+            </div>
+            </div>
+          {{/each}}
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdropcreatecourse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <form action="/coursemanagement" method="post" enctype="multipart/form-data">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Create Course</h5>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body" id="formcreatenewcourse">
+            <h6>Course Name</h6>
+            <h5 id="mescoursename">Course Name required. Please enter course name.</h5>
+            <input type="text" name="coursename" id="coursename" class="form-control">
+            <h6>Course Background</h6>
+            <h5 id="mescoursebackground">Course Background required. Please enter course background.</h5>
+            <h5 id="mestypeimage">Course Background is not match. Please enter type image for course background.</h5>
+            <input type="file" name="coursebackground" id="coursebackground">
+            <h6>Video Introduce(id video)</h6>
+            <h5 id="mesvideointro">Video Introduce required. Please enter video introduce.</h5>
+            <input type="text" name="videointro" id="videointro" class="form-control">
+            <h6>Price</h6>
+            <h5 id="mesprice">Course Price required. Please enter course price.</h5>
+            <input type="text" name="price" id="price" class="form-control">
+            <h6>Description</h6>
+            <h5 id="mesdescription">Description required. Please enter description.</h5>
+            <textarea name="description" id="description" cols="60" rows="5"></textarea>
+            <h6>Knowledge Required</h6>
+            <h5 id="mesrequired">Knowledge Required required. Please enter Knowledge Required.</h5>
+            <input type="text" name="required" id="required" class="form-control">
+            <h6>Knowledge Gained</h6>
+            <h5 id="mesgained">Knowledge Gained required. Please enter Knowledge Gained.</h5>
+            <input type="text" name="gained" id="gained" class="form-control">
+            <h6>Open Day</h6>
+            <h5 id="mesopenday">Open Day required. Please enter Open Day.</h5>
+            <input type="date" name="openday" id="openday" class="form-control">
+            <h6>End Day</h6>
+            <h5 id="mesendday">End Day required. Please enter End Day.</h5>
+            <input type="date" name="endday" id="endday" class="form-control">
+            <h6>TimeTable</h6>
+            <h5 id="mestimetable">TimeTable required. Please enter TimeTable.</h5>
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="inlineCheckboxMonday" name="inlineCheckboxMonday" value="Monday">
+              <label class="form-check-label" for="inlineCheckbox1">Monday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="inlineCheckboxTuesday" name="inlineCheckboxTuesday" value="Tuesday">
+              <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="inlineCheckboxWednesday" name="inlineCheckboxWednesday" value="Wednesday">
+              <label class="form-check-label" for="inlineCheckbox2">Wednesday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="inlineCheckboxThursday" name="inlineCheckboxThursday" value="Thursday">
+              <label class="form-check-label" for="inlineCheckbox2">Thursday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="inlineCheckboxFriday" name="inlineCheckboxFriday" value="Friday">
+              <label class="form-check-label" for="inlineCheckbox2">Friday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="inlineCheckboxSaturday" name="inlineCheckboxSaturday" value="Saturday">
+              <label class="form-check-label" for="inlineCheckbox2">Saturday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="inlineCheckboxSunday" name="inlineCheckboxSunday" value="Sunday">
+              <label class="form-check-label" for="inlineCheckbox2">Sunday</label>
+            </div>
+            <input type="time" name="timetb" id="timetb" class="form-control">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="submit" class="btn btn-primary" id="btncreatenewcourse">Create</button>
+        
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

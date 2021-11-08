@@ -1,0 +1,124 @@
+<div class="container-account">
+    <div class="left-container-account">
+        {{#if avatar}}
+            <img src="image/default-avatar.png" alt="avatar" class="avatar-account">
+        {{else}}
+            <img class="avatar-account" src="{{img}}" alt="avatar">  
+        {{/if}}
+        
+        <h4>{{firstname}} {{lastname}}</h4>
+        <p>{{email}}</p>
+         <ul>
+             <li><a href="/account">My Info</a></li>
+             {{#if teacher}}
+             <li><a href="/aboutcreatecourse">How to create course?</a></li>
+             <li><a href="/coursemanagement">Course Management</a></li>
+             {{else}}
+            <li><a href="/mycourse">My Course</a></li>
+             {{/if}}
+             <li><a href="/changepassword">Change Password</a></li>
+             <li><a href="/updateavatar">Change Avatar</a></li>
+         </ul>
+    </div>
+    <div class="right-container-account">
+        <div class="about-me">
+            <h2>About Me</h2>
+            <p>{{introduce}}</p>
+        </div>
+        <div class="my-infomation">
+            <h2>My Info</h2>
+            <table class="table-my-info table-borderless">
+                <tr>
+                    <td>First Name: {{firstname}}</td>
+                    <td>Last Name: {{lastname}}</td>
+                </tr>
+                <tr>
+                    <td>Phone Number: {{phonenumber}}</td>
+                    <td>Date: {{fomatted_date}}</td>
+                </tr>
+                <tr>
+                    <td>Address: {{address}}</td>
+                    <td>Degree: {{degree}}</td>
+                </tr>
+                <tr>         
+                    <td>Work Experience: {{workexper}}</td>
+                    <td>Subject: {{subject}}</td>
+                </tr>
+                <tr>
+                    <td>Mail Contact: {{mailcontact}}</td>
+                    {{#if teacher}}
+                    <td>Revenue: {{revenue}}$</td>
+                    {{else}}
+                    <td></td>
+                    {{/if}}
+                </tr>
+            </table>
+
+            <ul class="listinfo">
+                <li>First Name: {{firstname}}</li>
+                <li>Last Name: {{lastname}}</li>
+                <li>Date:  {{fomatted_date}}</li>
+                <li>Phone Number:{{phonenumber}}</li>
+                <li>Address: {{address}}</li>
+                <li>Degree: {{degree}}</li>
+                <li>Subject: {{subject}}</li>
+                <li>Work Experience: {{workexper}}</li>
+                <li>Mail Contact: {{mailcontact}}</li>
+                <li>Revenue: {{revenue}}$</li>
+            </ul>
+
+            <button id="btnupdateinfo" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdropupdateinfo">Update My Info</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdropupdateinfo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <form action="account/updateinfo" method="post">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Update Info</h5>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+            <h6>First Name</h6>
+            <h5 id="mesfname">First name required. Please enter your first name.</h5>
+            <input type="text" class="form-control" name="fname" id="fname" value="{{firstname}}">
+            <h6>Last Name</h6>
+            <h5 id="meslname">Last name required. Please enter your last name.</h5>
+            <input type="text" class="form-control" name="lname" id="lname" value="{{lastname}}">
+            <h6>Date</h6>
+            <h5 id="mesbirthday">Date required. Please enter your date.</h5>
+            <input type="date" id="birthday" name="birthday" id="birthday" class="form-control">
+            <h6>Phone Number</h6>
+            <h5 id="mesphone">Phone number required. Please enter your Phone number.</h5>
+            <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{phonenumber}}">
+            <h6>Address</h6>
+            <h5 id="mesaddress">Address required. Please enter your address.</h5>
+            <input type="text" class="form-control" name="address" id="address" value="{{address}}">
+            <h6>Degree</h6>
+            <h5 id="mesdegree">Degree required. Please enter your degree.</h5>
+            <input type="text" class="form-control" name="degree" id="degree" value="{{degree}}">
+            <h6>Subject</h6>
+            <h5 id="messubject">Subject required. Please enter your subject.</h5>
+            <input type="text" class="form-control" name="subject" id="subject" value="{{subject}}">
+            <h6>Work Experience</h6>
+            <h5 id="mesworkexper">Work experience required. Please enter your work experience.</h5>
+            <input type="text" class="form-control" name="workexper" id="workexper" value="{{workexper}}">
+            <h6>Mail Contact</h6>
+            <h5 id="mesmailcontact">Mail contact required. Please enter your mail contact.</h5>
+            <input type="text" class="form-control" name="mailcontact" id="mailcontact" value="{{mailcontact}}">
+            <h6>Introduce</h6>
+            <h5 id="mesintroduce">Introduce required. Please enter your introduce.</h5>
+            <textarea name="introduce" id="introduce" cols="60" rows="5" value="{{introduce}}"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="submit" class="btn btn-primary" id="btn-updateinfo">Update</button>
+        
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

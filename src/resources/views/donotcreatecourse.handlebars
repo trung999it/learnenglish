@@ -1,0 +1,23 @@
+<div class="container-account">
+    <div class="left-container-account">
+        {{#if avatar}}
+            <img src="image/default-avatar.png" alt="avatar" class="avatar-account">
+        {{else}}
+            <img class="avatar-account" src="{{img}}" alt="avatar">  
+        {{/if}}
+        
+        <h4>{{firstname}} {{lastname}}</h4>
+        <p>{{email}}</p>
+         <ul>
+             <li><a href="/account">My Info</a></li>
+             <li><a href="/aboutcreatecourse">How to create course?</a></li>
+             <li><a href="/coursemanagement">Course Management</a></li>
+             <li><a href="/changepassword">Change Password</a></li>
+             <li><a href="/updateavatar">Change Avatar</a></li>
+         </ul>
+    </div>
+    <div class="right-container-coursemanagement">
+        <h2>Sorry!!!</h2>
+        <p>Can't go to course manament.<a href="/aboutcreatecourse"> Learn More </a> </p>
+    </div>
+</div>

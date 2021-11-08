@@ -1,0 +1,53 @@
+<div class="container-account">
+    <div class="left-container-account">
+        {{#if avatar}}
+            <img src="image/default-avatar.png" alt="avatar" class="avatar-account">
+        {{else}}
+            <img class="avatar-account" src="{{img}}" alt="avatar"> 
+        {{/if}}
+        
+        <h4>{{firstname}} {{lastname}}</h4>
+        <p>{{email}}</p>
+         <ul>
+             <li><a href="/account">My Info</a></li>
+             {{#if teacher}}
+             <li><a href="/aboutcreatecourse">How to create course?</a></li>
+             <li><a href="/coursemanagement">Course Management</a></li>
+             {{else}}
+            <li><a href="/mycourse">My Course</a></li>
+             {{/if}}
+             <li><a href="/changepassword">Change Password</a></li>
+             <li><a href="/updateavatar">Change Avatar</a></li>
+         </ul>
+    </div>
+    <div class="right-container-avatar">
+        <div class="form-update-avatar">
+            <form action="/updateavatar" method="post" enctype="multipart/form-data">
+                <p>Click on to choose avatar</p>
+                <label for="avatar"><img src="image/no-image.png" id="noimage"></label>
+                <input type="file" name="avatar" id="avatar" class="form-control" onchange="loadFile(event)">
+                <button class="btn btn-outline-secondary" id="btn-update-avatar">Update</button>
+            </form>
+        </div>
+        <div class="review-avater">
+            <img src="image/default-avatar.png" alt="avatarreview" id="avatarreview">
+        </div>
+    </div>
+</div>
+<script>
+  var loadFile = function(event) {
+    let allowedExtension = ['image/jpeg', 'image/jpg', 'image/png','image/gif','image/bmp'];
+    let type = document.getElementById('avatar').files[0].type;
+    if(allowedExtension.indexOf(type)>-1){
+        var output = document.getElementById('avatarreview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    }else{
+        alert("Please Enter Type Image!!!");
+        return false;
+    }
+    
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>

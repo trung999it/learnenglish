@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Page Title -->
+    <title>LearnEnglish</title>
+
+    <!--orther -->
+    <!-- Favicon -->
+    <link rel="icon" href="image/icontittle.png"> 
+    <!-- Bundle -->
+    {{!-- <link rel="stylesheet" href="vendor\css\bundle.min.css">
+    <!-- Plugin Css -->
+    <link rel="stylesheet" href="vendor\css\jquery.fancybox.min.css">
+    <link rel="stylesheet" href="vendor\css\owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor\css\swiper.min.css">
+
+    <link rel="stylesheet" href="dentist\css\cubeportfolio.min.css">
+    <!-- Revolution Slider CSS Files -->
+    <link rel="stylesheet" href="dentist\css\navigation.css">
+    <link rel="stylesheet" href="dentist\css\settings.css">
+    <!-- Slick CSS Files -->
+    <link rel="stylesheet" href="dentist\css\slick.css">
+    <link rel="stylesheet" href="dentist\css\slick-theme.css">
+    <!-- Select -->
+    <link rel="stylesheet" href="dentist\css\select2.min.css">
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="dentist\css\style.css">
+    <!-- Custom Style CSS File -->
+    <link rel="stylesheet" href="dentist\css\custom.css"> --}}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+
+<div class="contain-form-create">
+	<div class="form-create-contain shadow p-3 mb-5 bg-white rounded" >
+		<div class="tittle-create">
+			<p>Create Account</p>
+            {{#if mes}}
+                <script>
+                    alert("Email already!!!");
+                </script>
+            {{/if}}
+		</div>
+        <form action="/createaccount" method="post">
+        <div class="form-create">
+            <div>First Name:</div>
+            <p id="mes-fname">First name required. Please enter your first name.</p>
+            <p id="mes-fname-regex">First name is not suitable. Please enter your first name.</p>
+            <input type="text" name="fname" id="fname" class="form-control">
+            <div>Last Name:</div>
+            <p id="mes-lname">Last name required. Please enter your last name.</p>
+            <p id="mes-lname-regex">Last name is not suitable. Please enter your last name.</p>
+            <input type="text" name="lname" id="lname" class="form-control">
+            <div>Email Address:</div>
+            <p id="mes-email">Please enter your email address.</p>
+            <p id="mes-email-regex">Email address is not suitable. Please enter your email address.</p>
+            <input type="text" name="email" id="email" class="form-control">
+            <div>Pass Word:</div>
+            <p id="mes-password">Please enter a password between 6-12 characters (no spaces).</p>
+            <p id="mes-password-regex">Pass word is not suitable. Please enter your pass word.</p>
+            <div class="input-group mb-3" id="showandhidepw">
+                <input type="password" name="password" id="password" class="form-control">
+                <button class="btn btn-light" type="button" id="button-showpw">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                    </svg>
+                </button>
+                <button class="btn btn-light" type="button" id="button-hidepw">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                        <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+                        <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+                        <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+                    </svg>
+                </button>
+
+            </div>
+
+
+            <div>Create for:</div>
+            <table class="menu-role">
+                <tr>
+                    <td id="role-one">
+                        <input type="radio" id="teacher" name="role" value="1" checked>
+                        <label for="teacher">Teacher</label>
+                    </td>
+                    <td id="role-two">
+                        <input type="radio" id="student" name="role" value="2">
+                        <label for="student">Student</label>
+                    </td>
+                </tr>
+            </table>
+                
+
+            <button class="btn btn-outline-primary" id="btncreateacc">Create Account</button>
+            
+            <div class="footer-form-create">
+                <a href="login">Or Login Now</a>
+            </div>
+        </div>
+        </form>
+	</div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- JavaScript -->
+{{!-- <script src="vendor\js\bundle.min.js"></script>
+
+<!-- Plugin Js -->
+<script src="vendor\js\jquery.fancybox.min.js"></script>
+<script src="vendor\js\owl.carousel.min.js"></script>
+<script src="vendor\js\swiper.min.js"></script>
+<script src="vendor\js\jquery.cubeportfolio.min.js"></script>
+<script src="vendor\js\jquery.appear.js"></script>
+<script src="vendor\js\parallaxie.min.js"></script>
+<script src="vendor\js\wow.js"></script>
+<script src="dentist\js\select2.min.js"></script>
+<!-- Slick JS File -->
+<script src="dentist\js\slick.min.js"></script>
+
+<!-- REVOLUTION JS FILES -->
+<script src="vendor\js\jquery.themepunch.tools.min.js"></script>
+<script src="vendor\js\jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION EXTENSIONS -->
+<script src="vendor\js\extensions\revolution.extension.actions.min.js"></script>
+<script src="vendor\js\extensions\revolution.extension.carousel.min.js"></script>
+<script src="vendor\js\extensions\revolution.extension.kenburn.min.js"></script>
+<script src="vendor\js\extensions\revolution.extension.layeranimation.min.js"></script>
+<script src="vendor\js\extensions\revolution.extension.migration.min.js"></script>
+<script src="vendor\js\extensions\revolution.extension.navigation.min.js"></script>
+<script src="vendor\js\extensions\revolution.extension.parallax.min.js"></script>
+<script src="vendor\js\extensions\revolution.extension.slideanims.min.js"></script>
+<script src="vendor\js\extensions\revolution.extension.video.min.js"></script>
+
+<!--contact form-->
+<script src="vendor\js\contact_us.js"></script>
+
+<!-- Google Map Api -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgIfLQi8KTxTJahilcem6qHusV-V6XXjw"></script>
+<script src="dentist\js\maps.min.js"></script>
+
+<!-- custom script -->
+<script src="dentist\js\script.js"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+   --}}
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+
+<header>
+    <nav class="navbar navbar-top-default navbar-expand-lg static-nav transparent-bg nav-bottom-line">
+        <div class="container">
+            {{!-- <a class="logo" href="..\index-dental.html#home">
+                <img src="img\logo.png" alt="logo" title="Logo" class="logo-default">
+                <img src="img\logo2.png" alt="logo" title="Logo" class="logo-scrolled">
+            </a> --}}
+            <a class="logo" href="/" style="color: black; font-size:16px;font-weight: bold;">
+                Learning<span style="color: red;">English</span>
+            </a>
+            <div class="collapse navbar-collapse d-none d-lg-block">
+                <ul class="nav navbar-nav ml-auto mr-4" id="navbarmenu">
+                    <li class="nav-item"> <a href="/" class="nav-link">home</a></li>
+                    <li class="nav-item"> <a href="/tutor" class="nav-link">tutor</a></li>
+                    <li class="nav-item"> <a href="/exercise" class="nav-link">cexercises</a></li>
+                    <li class="nav-item"> <a href="/courses" class="nav-link">Courses</a></li>
+                    <li class="nav-item"> <a href="#blog" class="nav-link">blog</a></li>
+                    <li class="nav-item"> <a href="/contact" class="nav-link">contact</a></li>
+                    <li class="nav-item"> <a href="/account" class="nav-link">account</a></li>
+                </ul>
+            </div>
+
+            {{#if meslogin}}
+                <a href="/logout" class="btn btn-outline-primary" id="btn-logout-account" style="opacity: 0.8;">Logout</a>
+            {{else}}
+                <a href="/login" class="btn btn-outline-primary" id="btn-login-account" style="opacity: 0.8;">Login</a>
+            {{/if}}
+            {{!-- <a href="/login" class="scroll btn-setting btn-scale btn-green text-white d-none d-lg-block">Login</a> --}}
+            
+            <!-- side menu open button -->
+            <a class="menu_bars d-inline-block menu-bars-setting" id="sidemenu_toggle">
+                <div class="menu-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
+        </div>
+    </nav>
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="inner-wrapper nav-icon">
+            <span class="btn-close" id="btn_sideNavClose"></span>
+            <nav class="side-nav w-100">
+                <div class="navbar-nav">
+                    <a href="/" class="nav-link">home</a>
+                    <a href="/tutor" class="nav-link">tutor</a>
+                    <a href="/exercise" class="nav-link">exercises</a>
+                    <a href="/courses" class="nav-link">Courses</a>
+                    <a href="#blog" class="nav-link">blog</a>
+                    <a href="/contact" class="nav-link">contact</a>
+                    <a href="/account" class="nav-link">account</a>
+                    {{#if meslogin}}
+                        <a href="/logout" class="nav-link" >Logout</a>
+                    {{else}}
+                        <a href="/login" class="nav-link" >Login</a>
+                    {{/if}}
+                    <a class="menu-line"><i class="fa fa-angle-right font-14" aria-hidden="true"></i></a>
+                </div>
+            </nav>
+
+            <div class="side-footer text-white w-100">
+                <ul class="social-icons-simple">
+                    <li class="side-menu-icons"><a href="javascript:void(0)"><i class="fab fa-facebook-f color-white"></i> </a> </li>
+                    <li class="side-menu-icons"><a href="javascript:void(0)"><i class="fab fa-instagram color-white"></i> </a> </li>
+                    <li class="side-menu-icons"><a href="javascript:void(0)"><i class="fab fa-twitter color-white"></i> </a> </li>
+                </ul>
+                <p class="text-white">&copy; 2021 Learning EngLish. Made With Love by Me</p>
+            </div>
+        </div>
+    </div>
+    <a id="close_side_menu" href="javascript:void(0);"></a>
+    <!--Side Menu-->
+</header>

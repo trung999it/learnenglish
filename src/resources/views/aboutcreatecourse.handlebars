@@ -1,0 +1,27 @@
+<div class="container-account">
+    <div class="left-container-account">
+        {{#if avatar}}
+            <img src="image/default-avatar.png" alt="avatar" class="avatar-account">
+        {{else}}
+            <img class="avatar-account" src="{{img}}" alt="avatar">  
+        {{/if}}
+        
+        <h4>{{firstname}} {{lastname}}</h4>
+        <p>{{email}}</p>
+         <ul>
+             <li><a href="/account">My Info</a></li>
+             <li><a href="/aboutcreatecourse">How to create course?</a></li>
+             <li><a href="/coursemanagement">Course Management</a></li>
+             <li><a href="/changepassword">Change Password</a></li>
+             <li><a href="/updateavatar">Change Avatar</a></li>
+         </ul>
+    </div>
+    <div class="right-container-aboutcreatecourse">
+        <h2>How to create course?</h2>
+        <p>Step 1: Update your infomation <a href="/account">(My Info)</a>. We need your infomation to authenticate.</p>
+        <p>Step 2: Send Email to learningenglish@gmail.com with your profile(CV,duplicate university degree,...)</p>
+        <p>Step 3: Receive email from learningenglish@gmail.com</p>
+        <p>Step 4: If you have completed all the above steps. Go to <a href="#">Course Management</a> and create your course.</p>
+    </div>
+</div>
+

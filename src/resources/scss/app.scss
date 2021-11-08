@@ -1,0 +1,812 @@
+.searchcourse{
+    width: 100%;
+    height: auto;
+}
+
+.div-input-search{
+    width: 100%;
+    height: auto;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#input-search-course,#input-search-tutor{
+    width: 600px;
+}
+
+#btn-search-course{
+    background-color: white;
+    outline: none;
+    border: none;
+    position: relative;
+    top: -10px;
+}
+
+#btn-search-course:hover{
+    color: blue;
+}
+
+.listtutorcontain{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .listtutor{
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        .card{
+            margin: 20px 15px 20px 40px;
+        }
+    }
+    .listcourse{
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        .card{
+            margin: 20px 15px 20px 40px;
+        }
+    }
+}
+
+
+
+.container-formcontact{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formcontact{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.formcontact div{
+    width: 50%;
+    height: 500px;
+}
+
+#formcontactform input{
+    width: 520px;
+}
+
+
+.container-account{
+    width: 100%;
+    height: auto;
+    margin-bottom: 100px;
+}
+
+.left-container-account{
+    width: 30%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-container-account h4,p,ul,li{
+    margin: 10px;
+}
+
+.right-container-account{
+    width: 70%;
+    height: auto;
+    display: flex;
+}
+
+
+
+.avatar-account{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+
+.container-account{
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-info input{
+    width: 400px;
+    margin: 0;
+}
+
+
+#title-exercise{
+    margin-top: 120px;
+}
+
+#containerexercise{
+    margin-bottom: 150px;
+}
+
+
+.coursedetail{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.courseiamge{
+    width: 70%;
+    height: auto;
+    margin-top: 120px;
+}
+
+.courseinfo{
+    width: 70%;
+    height: auto;
+}
+.courseinfo h3{
+    margin-top: 20px;
+}
+
+.videopreview{
+    width: 800px;
+    height: 500px;
+    margin-bottom: 70px;
+    margin-top: 70px;
+}
+
+.paymentpaypal{
+    width: 300px;
+    height: auto;
+}
+
+.othercourse{
+    margin-bottom: 100px;
+}
+
+.steamroom-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.video-container{
+    width: 80%;
+    height: 90vh;
+    background-color: #F3F3F3;
+}
+
+.chat-container{
+    width: 20%;
+    height: 90vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+.chat-container div{
+    border: none;
+    margin: 20px 10px 20px 10px;
+    border-radius: 10px;
+    background-color: #ECF5FB;
+}
+
+
+.stream-menu{
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    top: 90vh;
+    background-color: #dcdcdc;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-button{
+    width: 70%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.chat-input{
+    width: 30%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chatinput{
+    margin: 0px 20px 0px 0px;
+}
+
+#btnsendchat{
+    margin-right: 20px;
+}
+
+#btnshowvideo,#btnshowmicro,#btnhidevideo,#btnhidemicro{
+    border-radius: 30px;
+}
+
+#btnhidevideo,#btnhidemicro{
+    display: none;
+}
+
+
+.contain-form-login,.contain-form-create{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dcdcdc;
+}
+
+
+.form-login{
+    width: 375px;
+    height: 640px;
+    background-color: #F3F3F3;
+    box-shadow: 0 20px 34px 0 rgba(0, 0, 0, 0.2), 0 26px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-create-contain{
+    width: 375px;
+    height: 667px;
+    background-color: #F3F3F3;
+    box-shadow: 0 20px 34px 0 rgba(0, 0, 0, 0.2), 0 26px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+.tittle-login{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tittle-create{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.tittle-login p{
+    font-size: 40px;
+    font-weight: lighter;
+}
+.tittle-create p{
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+
+
+
+.form-input{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input input{
+    width: 100%;
+}
+
+.form-input #btnlogin{
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+.table-menu-account{
+    margin: 20px;
+}
+
+.table-menu-account a{
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+#tdright{
+    float: right;
+}
+
+.warning-mes{
+    width: 100%;
+    height: auto;
+}
+
+.warning-mes p{
+    color: red;
+    display: none;
+    font-size: 12px;
+}
+
+.other-method-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.form-create div{
+    margin-top: 10px;
+}
+
+
+#footer-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-role{
+    width: 100%;
+    height: auto;
+}
+
+#role-one input{
+    margin-left: 40px;
+}
+
+#btncreateacc{
+    width: 100%;
+    margin-top: 10px;
+    opacity: 0.6;
+}
+
+.footer-form-create{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    a{
+        margin-top: 20px;
+        text-decoration: none;
+        opacity: 0.8;
+    }
+}
+
+#mes-fname,#mes-lname,#mes-email,#mes-password,#mes-fname-regex,#mes-lname-regex,#mes-email-regex,#mes-password-regex{
+    color: red;
+    font-size: 12px;
+    margin: 0;
+    position: relative;
+    display: none;
+}
+
+.red-border{
+    border-color: red;
+}
+#button-hidepw{
+    display: none;
+}
+
+#showandhidepw{
+    margin: 0 !important;
+}
+
+.about-me{
+    width: 40%;
+    height: auto;
+    p{
+        text-align: justify;
+        margin-top: 30px;
+    }
+}
+
+.my-infomation{
+    width: 60%;
+    height: auto;
+    table{
+        margin: 20px;
+    }
+    h2{
+        margin-left: 20px;
+    }
+}
+
+.listinfo{
+    display: none;
+}
+
+#btnupdateinfo{
+    margin-left: 20px;
+}
+
+
+
+
+.modal-body h5{
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+.form-update-avatar{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input{
+        display: none;
+    }
+    button{
+        width: 60%;
+    }
+
+
+}
+
+.right-container-avatar{
+    width: 70%;
+    height: auto;
+    display: flex;
+}
+
+
+
+.review-avater{
+    width: 50%;
+    height: auto;
+}
+
+#avatarreview{
+    width: 400px;
+    height: 400px;
+    margin-top: 100px;
+    border-radius: 1000px;
+}
+
+#noimage{
+    width: 60%;
+    height: auto;
+}
+
+.right-container-password{
+    width: 70%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-change-password{
+    width: 50%;
+    height: auto;
+    h5{
+        font-size: 12px;
+        color: red;
+        display: none;
+    }
+}
+
+#change-password{
+    margin-bottom: 50px;
+}
+
+#formcontactform h5{
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+#thankyou{
+    width: 100%;
+    height: 100vh;
+}
+
+
+
+#table-usermanagement{
+    margin-top: 100px;
+}
+
+.user-detail{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-avt{
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 350px;
+        height: 350px;
+        border-radius: 500px;
+    }
+}
+
+.user-info{
+    width: 60%;
+    height: 100vh;
+    
+    .userinto{
+        height: 30%;
+        
+        h2{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 50px;
+            margin-top: 20px;
+        }
+        p{
+            font-family: 'Roboto', sans-serif;
+            text-align: justify;
+        }
+    }
+
+    .usertbinfo{
+        height: 40%;
+        #tbuserinfomation tr td{
+            margin: 100px;
+            width: 500px;
+        }
+    }
+    .form-user-create-course-status{
+        height: 30%;
+        select{
+            width: 200px;
+        }
+    }
+}
+
+#btnsubmitcreatecoursestatus{
+    margin-left: 100px;
+}
+
+.right-container-coursemanagement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: auto;
+    flex-direction: column;
+}
+
+#btncreatecoursemodal{
+    margin-bottom: 40px;
+}
+
+#coursebackground{
+    width: 100%;
+}
+
+.list-course-teacher{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    .card{
+        margin: 30px;
+    }
+
+    .card-text{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.right-container-coursedetail{
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.right-container-course-management{
+    width: 70%;
+}
+
+.course-detail-contain{
+    width: 60%;
+    height: auto;
+    .coursetagp{
+        text-align: justify;
+    }
+
+    h3{
+        font-family: 'Roboto', sans-serif;
+    }
+}
+
+.course-detail-info{
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.videointrocourse{
+    width: 90%;
+}
+
+#list-video-teacher{
+    margin-top: 40px;
+}
+
+#addvideo{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.admin-dashboarch{
+    width: 100%;
+    height: 100vh;
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1300px) {
+    #input-search-tutor{
+        width: 300px;
+    }
+    .right-container-coursedetail{
+        display: flex;
+        flex-direction: column;
+    }
+    .course-detail-contain{
+        width: 100%;
+    }
+
+    .course-detail-info{
+        width: 100%;
+    }
+
+    .videointrocourse{
+        width: 100%;
+    }
+
+    .list-course-teacher{
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .listtutorcontain .listtutor .card{
+        margin-left: 20px;
+    }
+
+
+    .listtutorcontain .listcourse .card{
+        margin-left: 20px;
+    }
+
+    #navbarmenu li a{
+        display: none;
+    }
+
+    .formcontact-map{
+        display: none;
+    }
+
+    .formcontact div{
+        width: 100%;
+    }
+
+    .form-change-password{
+        width: 90%;
+    }
+
+    #btn-login-account{
+        display: none;
+    }
+
+    #btn-logout-account{
+        display: none;
+    }
+
+    .container-account{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .right-container-account{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 40px;
+        .about-me{
+            width: 100%;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .my-infomation{
+            width: 100%;
+            align-items: center;
+            margin-top: 20px;
+        }
+    }
+
+    .left-container-account{
+        width: 100%;
+        height: auto;
+    }
+
+    .table-my-info{
+        display: none;
+    }
+
+    .listinfo{
+        display: block;
+    }
+
+    #btnupdateinfo{
+        margin-left: 0px;
+        margin-bottom: 50px;
+    }
+
+    .form-update-avatar{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        input{
+            display: none;
+        }
+        button{
+            width: 60%;
+            margin-bottom: 50px;
+        }
+    }
+
+    .review-avater{
+        width: 100%;
+        height: auto;
+    }
+
+    .right-container-avatar{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #avatarreview{
+        width: 250px;
+        height: 250px;
+        margin-top: 10px;
+        margin-bottom: 100px;
+    }
+}
