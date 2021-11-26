@@ -606,7 +606,9 @@
     .card{
         margin: 30px;
     }
-
+    img{
+        height: 200px;
+    }
     .card-text{
         white-space: nowrap;
         overflow: hidden;
@@ -661,17 +663,267 @@
 
 .admin-dashboarch{
     width: 100%;
-    height: 100vh;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    div{
+        margin-top: 100px;
+        border: 1.5px solid black;
+        width: 300px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 20px;
+        p{
+            font-size: 40px;
+        }
+    }
+}
+
+.coursedetain-addmin-contain{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    .v-introduce{
+        width: 50%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        h2{
+            margin-top: 30px;
+        }
+    }
+    .addinfocourse{
+        width: 50%;
+        height: auto;
+        h1{
+            color: #C0C0C0;
+            margin-top: 30px;
+        }
+    }
+}
+
+.addminlistvideo{
+    width: 100%;
+    height: auto;
+    h1{
+        color: #C0C0C0;
+        margin: 50px 0px 0px 100px;
+    }
+}
+
+.videos{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.onevideo{
+    width: 250px;
+    height: 180px;
+    margin: 70px 0px 0px 45px;
+}
+
+.detail-course-contain-public{
+    width: 100%;
+    height: auto;
+    margin-top: 90px;
+    display: flex;
+    flex-direction: row;
+    .v-introduce{
+        width: 50%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .diviframe{
+            width: 500px;
+            height: 350px;
+        }
+        h3{
+            margin-top: 30px;
+        }
+    }
+    .info-course-public{
+        width: 50%;
+        height: auto;
+        #btnbuycourse{
+            margin-bottom: 40px;
+        }
+    }
 }
 
 
+.list-video-and-other{
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    div{
+        margin: 30px;
+        .href-name{
+            color: black;
+            font-size: 25px;
+        }
+    }
+
+}
+
+.right-container-studentcourse{
+    display: flex;
+    flex-wrap: wrap;
+    div{
+        width: 18rem;
+        height: auto;
+        margin: 30px;
+    }
+}
+
+.right-container-listlesson{
+    width: 70%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .listlesson{
+        width: 80%;
+        height: auto;
+    }
+    .menu-listlesson{
+        width: 80%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .todayslesson{
+        width: 80%;
+        height: auto;
+    }
+    #listlesson{
+        display: none;
+    }
+}
+
+.teacherdetilinfopublic{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    .teacherdetilinfopublic-image{
+        width: 30%;
+        height: auto;
+        img{
+            height: 60vh;
+        }
+    }
+    .teacherdetilinfopublic-info{
+        width: 60%;
+        height: 60vh;
+        background-color: #edf9ff;
+    }
+}
+
+.div-form-create-blog{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .div-form-create-blog-contain{
+        width: 70%;
+        height: auto;
+    }
+}
 
 
+.right-container-blogdetail{
+    width: 60%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    img{
+        width: 450px;
+        height: 360px;
+    }
+}
 
-
+.listblog{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    img{
+        width: 650px;
+        height: auto;
+    }
+}
 
 
 @media only screen and (max-width: 1300px) {
+
+    .div-form-create-blog-contain{
+        width: 100%;
+        height:auto;
+    }
+    .teacherdetilinfopublic{
+        height: auto;
+        flex-direction: column;
+        .teacherdetilinfopublic-image{
+            width: auto;
+            height: auto;
+            img{
+                width: 100%;
+            }
+        }
+        .teacherdetilinfopublic-info{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+
+    .right-container-listlesson{
+        width: 100%;
+        .listlesson{
+            width: 100%;
+        }
+    }
+
+    .detail-course-contain-public{
+        display: flex;
+        flex-direction: column;
+        .info-course-public{
+            width: 100%;
+        }
+        .v-introduce{
+            width: 100%;
+            .diviframe{
+                width: 100%;
+                height: 300px;
+            }
+        }
+    }
+
+
     #input-search-tutor{
         width: 300px;
     }

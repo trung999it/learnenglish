@@ -15,6 +15,10 @@ const coursemanagement = require('./createcourse.route')
 const tutorcontroler = require('./tutor.route')
 const coursecontroler = require('./course.route')
 const admincoursemanagement = require('./coursemanagement.route')
+const studentcourse = require('./studentcourse.route')
+const createblog = require('./createblog.route')
+const blog = require('./blog.route')
+const blogmanagement = require('./blogmanagement.route')
 
 function route(app){
     app.get('/', (req, res) => {
@@ -65,18 +69,19 @@ function route(app){
         res.render('exercise');
       })
       
-      app.get('/coursedetail', (req, res) => {
-        res.render('coursedetail');
-      })
-      
-      app.get('/streamroom', (req, res) => {
-        res.render('streamroom',  { layout : false });
+      app.get('/streamroom/:id', (req, res) => {
+        res.render('streamroom',{ layout: false ,roomId: req.params.id });
       })
 
       app.use('/createaccount', createaccount)
 
-
+      app.use('/mycourse', studentcourse)
       
+      app.use('/createblog' , createblog)
+
+      app.use('/blog', blog)
+
+      app.use('/blogmanagement', blogmanagement)
 }
 
 module.exports = route;

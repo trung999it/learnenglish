@@ -30,9 +30,20 @@
     <link rel="stylesheet" href="dentist\css\style.css">
     <!-- Custom Style CSS File -->
     <link rel="stylesheet" href="dentist\css\custom.css">
-    
+
+    {{!-- more --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/usermanagement.css">
 </head>
+
 <body data-spy="scroll" data-target=".navbar-nav" data-offset="90">
 
 {{!-- HEADER --}}
@@ -70,6 +81,7 @@
                     <a href="/dashboard" class="nav-link">Dash Board</a>
                     <a href="/usermanagement" class="nav-link">User Management</a>
                     <a href="/course_management" class="nav-link">Course Management</a>
+                    <a href="/blogmanagement" class="nav-link">Blog Management</a>
                     <a href="/logout" class="nav-link" >Logout</a>
                     <a class="menu-line"><i class="fa fa-angle-right font-14" aria-hidden="true"></i></a>
                 </div>
@@ -92,7 +104,7 @@
 {{!-- FINISH HEADER --}}
 
 {{!-- BODY --}}
-<table class="table table-hover" id="table-usermanagement">
+{{!-- <table class="table table-hover" id="table-usermanagement">
   <thead>
     <tr class="table-primary">
       <th scope="col">User Name</th>
@@ -119,9 +131,50 @@
         </tr>
     {{/each}}
   </tbody>
-</table>
+</table> --}}
 
-
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-10" id="titleordermanagement">
+                        <h2><b>User</b> Management</h2>
+                    </div>
+                </div>
+            </div>
+            <input type="text" name="searchorder" id="searchorder" class="form-control form-control-sm" placeholder="Enter username ...">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>First Name</th>						
+                        <th>Last Name</th>
+                        <th>Create Course Status</th>
+                        <th>Revenue</th>
+                        <th>User Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each user}}
+                        <tr>
+                            <th>{{this.username}}</th>
+                            <td>{{this.firstname}}</td>
+                            <td>{{this.lastname}}</td>
+                            {{#if this.create_course_status}}
+                                <td><span class="status text-success">&bull;</span> Enable</td>
+                            {{else}}
+                                <td><span class="status text-danger">&bull;</span> Disable</td>
+                            {{/if}}
+                            <td>{{this.revenue}}$</td>
+                            <td><a href="/usermanagement/{{this._id}}"><button class="btn btn-outline-secondary" id="btnuserdetail">Detail</button></a></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 

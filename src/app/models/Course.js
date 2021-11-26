@@ -15,7 +15,7 @@ const Course = new Schema({
     timetable: { type: String, default: '' },
     active_status:{type: String, default: 'prepare'},
     course_status: { type: Number, default: 0 },
-    member: [{type: String, default:''}],
+    member: [{student: String, complete: Number}],
     notification: { type: String, default: '' },
     exercise: { type: String, default: '' },
     listvideo: [{title: String , idvideo: String , comment: [{user:String , com: String}]}],

@@ -1,0 +1,36 @@
+
+<div class="searchcourse">
+    <div class="div-input-search">
+        <input type="text" id="input-search-tutor">
+        <button id="btn-search-course">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+
+        </button>
+    </div>
+</div>
+
+<div class="row">
+            <div class="col-md-12">
+                <div class="main-title wow fadeIn" data-wow-delay="300ms">
+                    <h2> exciting <b>Blog</b> </h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales lobortis vehicula. Aliquam sodales turpis a neque sagittis, condimentum imperdiet risus luctus. Praesent cursus non risus in tempor.</p>
+                </div>
+            </div>
+</div>
+<div class="listblog">
+    {{#each blog}}
+        <div class="card mb-3">
+            <a href="/blog/{{this._id}}"> 
+            <img src="{{this.image}}" class="card-img-top" alt="blogbackground">
+            </a>
+            <div class="card-body">
+                 <a href="/blog/{{this._id}}"> 
+                <h4 class="card-title">{{this.blogtittle}}</h4>
+                </a>
+                <p class="card-text"><small class="text-muted">{{this.author}}</small></p>
+            </div>
+        </div>
+    {{/each}}
+</div>

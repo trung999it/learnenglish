@@ -1,0 +1,101 @@
+<div class="container-account">
+    <div class="left-container-account">
+        {{#if avatar}}
+            <img src="image/default-avatar.png" alt="avatar" class="avatar-account">
+        {{else}}
+            <img class="avatar-account" src="{{img}}" alt="avatar">  
+        {{/if}}
+        
+        <h4>{{firstname}} {{lastname}}</h4>
+        <p>{{email}}</p>
+         <ul>
+             <li><a href="/account">My Info</a></li>
+             <li><a href="/aboutcreatecourse">How to create course?</a></li>
+             <li><a href="/coursemanagement">Course Management</a></li>
+             <li><a href="/createblog">Blog Management</a></li>
+             <li><a href="/changepassword">Change Password</a></li>
+             <li><a href="/updateavatar">Change Avatar</a></li>
+         </ul>
+    </div>
+    <div class="right-container-course-management">
+        <h2>Create Blog</h2>
+        <div class="div-form-create-blog">
+            <div class="div-form-create-blog-contain">
+                <form action="/createblog" method="post" enctype="multipart/form-data">
+                <p>Blog Tittle</p>
+                <input type="text" name="blogtittle" id="blogtittle" class="form-control">
+                <p>Blog Background</p>
+                <input type="file" name="blogbackground" id="blogbackground">
+                <p>Blog Header</p>
+                <textarea name="blogheader" id="blogheader" cols="100" rows="5"></textarea>
+                <p>Blog Contain</p>
+                <textarea name="blogcontain" id="blogcontain" cols="100" rows="10"></textarea>
+                <p>Blog Footer</p>
+                <textarea name="blogfooter" id="blogfooter" cols="100" rows="5"></textarea>
+                <input type="submit" name="submit" id="btncreateblog" class="btn btn-outline-primary" value="Create Blog">
+                </form>
+            </div>
+        </div>
+        <h2>My Blog</h2>
+        <table class="table table-hover" style="margin-bottom:100px ;">
+            <thead>
+                <tr>
+                <th scope="col">Blog Tittle</th>
+                <th scope="col">Status</th>
+                <th scope="col">Detail</th>
+                <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each blog}}
+                <tr>
+                    <td>{{this.blogtittle}}</td>
+                    <td>{{this.blogstatus}}</td>
+                    
+                    <td><a href="/createblog/{{this._id}}"><button class="btn btn-outline-secondary" id="btndeleteblog">Detail</button></a></td>
+                    <td><button class="btn btn-outline-danger" id="btndeleteblog" data-toggle="modal" data-target="#modaldeleteblog" data-idblog="{{this._id}}">Delete</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modaldeleteblog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Blog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/createblog/deleteblog" method="post">
+      <div class="modal-body">
+        Are you sure?
+        <input type="hidden" name="idblog" id="idblog" value="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-danger" id="btnsubmitdeleteblog">Delete</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function(event){
+        var idblog;
+        $('#modaldeleteblog').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            idblog = button.data('idblog') // Extract info from data-* attributes
+            document.getElementById('idblog').value = idblog;
+        })
+
+    })
+ 
+</script>

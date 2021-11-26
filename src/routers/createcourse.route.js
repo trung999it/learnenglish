@@ -6,6 +6,10 @@ var fs = require('fs')
 const upload = multer({ dest: 'uploads/' })
 const createcourse = require('../app/controllers/createcoursecontroler')
 
+router.post('/:id/updateresult' , createcourse.updateresult)
+
+router.delete('/:idvideo', createcourse.destroy)
+
 router.post('/:id/addvideo' , createcourse.addvideo)
 
 router.post('/:id/updatelesson' , createcourse.updatelesson)

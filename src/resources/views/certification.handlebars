@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>  
+        table {  
+            font-family: arial, sans-serif;  
+            border-collapse: collapse;  
+            width: 100%;  
+        }  
+  
+        td, th {  
+            border: 1px solid #dddddd;  
+            text-align: left;  
+            padding: 8px;  
+        }  
+  
+        tr:nth-child(even) {  
+            background-color: #dddddd;  
+        }  
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <title>Certification</title>
+</head>
+<body>
+    <input type="button" id="create_pdf" value="Generate PDF" class="btn btn-outline-primary">  
+    <form class="form" style="max-width: none; width: 1005px; display:flex;align-items: center;justify-content: center;flex-direction: column;">  
+        <h1 style="font-family: 'Anton', sans-serif;font-size:50px">Learning <span style="color: red;">English</span> </h1>
+        <h2 style="font-family: 'Anton', sans-serif;font-size:40px;color:red">CERTIFICATION</h2>
+        <h2>{{course.coursename}}</h2>
+        <table>
+            <tr>
+                <td>For:{{user.firstname}} {{user.lastname}}</td>
+                <td>Teacher:{{teacher.firstname}} {{teacher.lastname}}</td>
+            </tr>
+            <tr>
+                <td>Email:{{user.username}}</td>
+                <td>Email:{{course.author}}</td>
+            </tr>
+            <tr>
+                <td>Date:{{fomatted_date}}</td>
+                <td>Degree{{teacher.degree}}</td>
+            </tr>
+            <tr>
+                <td>Phone Number:{{user.phone_number}}</td>
+                <td>OpenDay:{{course.openday}}</td>
+                
+            </tr>
+            <tr>
+                <td>Address:{{user.address}}</td>
+                <td>Address:{{teacher.address}}</td>
+            </tr>
+            <tr>
+                <td>Completed the Course:{{course.coursename}}</td>
+                <td>OpenDay:{{course.openday}}</td>
+            </tr>
+            <tr>
+                <td>Author:{{teacher.firstname}} {{teacher.lastname}}</td>
+                <td>EndDay:{{course.endday}}</td>
+            </tr>       
+        </table>
+        
+        <table>
+            <tr>
+                <td>
+                    Learning English</br>
+                    Address: 100 3/2 Xuân khánh Ninh Kiều Cần Thơ</br>
+                    Phone: 0909205984</br>
+                    Email: learningenglish@gmail.com</br>
+                    Fax: 0892875026
+                </td>
+                <td>
+                    <img src="../../image/daumoc.png" alt="daumocdo" style="width: 260px;height:190px">
+                </td>
+            </tr>
+        </table>
+                
+            
+                
+        
+
+
+    </form>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script> 
+    <script>  
+    (function () {  
+        var  
+         form = $('.form'),  
+         cache_width = form.width(),  
+         a4 = [595.28, 841.89]; // for a4 size paper width and height  
+  
+        $('#create_pdf').on('click', function () {  
+            $('body').scrollTop(0);  
+            createPDF();  
+        });  
+        //create pdf  
+        function createPDF() {  
+            getCanvas().then(function (canvas) {  
+                var  
+                 img = canvas.toDataURL("image/png"),  
+                 doc = new jsPDF({  
+                     unit: 'px',  
+                     format: 'a4'  
+                 });  
+                doc.addImage(img, 'JPEG', 20, 20);  
+                doc.save('certification.pdf');  
+                form.width(cache_width);  
+            });  
+        }  
+  
+        // create canvas object  
+        function getCanvas() {  
+            form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');  
+            return html2canvas(form, {  
+                imageTimeout: 2000,  
+                removeContainer: true  
+            });  
+        }  
+  
+    }());  
+</script>  
+<script>  
+    /* 
+ * jQuery helper plugin for examples and tests 
+ */  
+    (function ($) {  
+        $.fn.html2canvas = function (options) {  
+            var date = new Date(),  
+            $message = null,  
+            timeoutTimer = false,  
+            timer = date.getTime();  
+            html2canvas.logging = options && options.logging;  
+            html2canvas.Preload(this[0], $.extend({  
+                complete: function (images) {  
+                    var queue = html2canvas.Parse(this[0], images, options),  
+                    $canvas = $(html2canvas.Renderer(queue, options)),  
+                    finishTime = new Date();  
+  
+                    $canvas.css({ position: 'absolute', left: 0, top: 0 }).appendTo(document.body);  
+                    $canvas.siblings().toggle();  
+  
+                    $(window).click(function () {  
+                        if (!$canvas.is(':visible')) {  
+                            $canvas.toggle().siblings().toggle();  
+                            throwMessage("Canvas Render visible");  
+                        } else {  
+                            $canvas.siblings().toggle();  
+                            $canvas.toggle();  
+                            throwMessage("Canvas Render hidden");  
+                        }  
+                    });  
+                    throwMessage('Screenshot created in ' + ((finishTime.getTime() - timer) / 1000) + " seconds<br />", 4000);  
+                }  
+            }, options));  
+  
+            function throwMessage(msg, duration) {  
+                window.clearTimeout(timeoutTimer);  
+                timeoutTimer = window.setTimeout(function () {  
+                    $message.fadeOut(function () {  
+                        $message.remove();  
+                    });  
+                }, duration || 2000);  
+                if ($message)  
+                    $message.remove();  
+                $message = $('<div ></div>').html(msg).css({  
+                    margin: 0,  
+                    padding: 10,  
+                    background: "#000",  
+                    opacity: 0.7,  
+                    position: "fixed",  
+                    top: 10,  
+                    right: 10,  
+                    fontFamily: 'Tahoma',  
+                    color: '#fff',  
+                    fontSize: 12,  
+                    borderRadius: 12,  
+                    width: 'auto',  
+                    height: 'auto',  
+                    textAlign: 'center',  
+                    textDecoration: 'none'  
+                }).hide().fadeIn().appendTo('body');  
+            }  
+        };  
+    })(jQuery);  
+  
+</script>  
+</body>
+</html>

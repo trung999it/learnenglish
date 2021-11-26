@@ -55,7 +55,7 @@
                     <li class="nav-item"> <a href="/tutor" class="nav-link">tutor</a></li>
                     <li class="nav-item"> <a href="/exercise" class="nav-link">cexercises</a></li>
                     <li class="nav-item"> <a href="/courses" class="nav-link">Courses</a></li>
-                    <li class="nav-item"> <a href="#blog" class="nav-link">blog</a></li>
+                    <li class="nav-item"> <a href="/blog" class="nav-link">blog</a></li>
                     <li class="nav-item"> <a href="/contact" class="nav-link">contact</a></li>
                     <li class="nav-item"> <a href="/account" class="nav-link">account</a></li>
                 </ul>
@@ -88,7 +88,7 @@
                     <a href="/tutor" class="nav-link">tutor</a>
                     <a href="/exercise" class="nav-link">exercises</a>
                     <a href="/courses" class="nav-link">Courses</a>
-                    <a href="#blog" class="nav-link">blog</a>
+                    <a href="/blog" class="nav-link">blog</a>
                     <a href="/contact" class="nav-link">contact</a>
                     <a href="/account" class="nav-link">account</a>
                     {{#if meslogin}}
@@ -130,6 +130,7 @@
              <li><a href="/account">My Info</a></li>
              <li><a href="/aboutcreatecourse">How to create course?</a></li>
              <li><a href="/coursemanagement">Course Management</a></li>
+             <li><a href="/createblog">Blog Management</a></li>
              <li><a href="/changepassword">Change Password</a></li>
              <li><a href="/updateavatar">Change Avatar</a></li>
          </ul>
@@ -169,6 +170,7 @@
                     <tr>
                     <th scope="col">Video Tittle</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -181,12 +183,23 @@
                             <span><i class="fa fa-play"></i></span></a>
                         </div>
                     </td>
+                    <td>
+                        <center>
+                        <button class="btn btn-outline-danger" style="margin-top: 16px;" data-toggle="modal" data-target="#deletevideoModal" data-idvideo="{{this.idvideo}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </button>
+                        </center>
+                    </td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
         </div>
         <div class="course-detail-info">
+            <a href="/streamroom/{{course._id}}"><button type="button" class="btn btn-outline-primary">Learn Online</button></a>
             <div class="videointrocourse">
                 <iframe width="200" height="255" src="https://www.youtube.com/embed/{{course.idvideointro}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -202,8 +215,61 @@
             {{else}}
             <p>Course Status: InActive</p>
             {{/if}}
+            <h2>My Student</h2>
+            <table class="table table-hover" id="tableliststudent">
+                <thead>
+                    <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Result</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each course.member}}
+                        <tr>
+                            <td>{{this.student}}</td>
+                            {{#if this.complete}}
+                            <td>Finished</td>
+                            {{else}}
+                            <td>UnFinished</td>
+                            {{/if}}
+                            <td style="width: 100px;">
+                                <button class="btn btn-outline-secondary" id="updatecomplete" data-bs-toggle="modal" data-bs-target="#modalupdatecomplete" data-student="{{this.student}}">Classify</button>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="modalupdatecomplete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Classify</h5>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <form action="/coursemanagement/{{course._id}}/updateresult" method="post">
+      <div class="modal-body">
+        
+            <input type="hidden" name="completecourseid" id="completecourseid" value="{{course._id}}">
+            <input type="hidden" name="completestudenthidden" id="completestudenthidden" value="">
+            <input type="text" style="width: 200px;" class="form-control-sm" name="completestudent" id="completestudent" value="" disabled="disabled">
+            <select name="completemenu" id="completemenu" class="form-control-sm">
+                <option value="0">UnFinished</option>
+                <option value="1">Finished</option>
+            </select>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="btncomplete">Classify</button>
+      </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 
@@ -212,6 +278,8 @@
     <div class="modal-content">
         <form action="/coursemanagement/{{course._id}}/updatelesson" method="post">
       <div class="modal-header">
+          
+          
         <h5 class="modal-title" id="staticBackdropLabel">Update Today's Lesson</h5>
         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
@@ -227,7 +295,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" name="submit" class="btn btn-primary" id="btn-updatelesson">Update</button>
-        
       </div>
       </form>
     </div>
@@ -263,8 +330,29 @@
   </div>
 </div>
 
+<div class="modal fade" id="deletevideoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Video?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="btndelete-video" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-
+<form name="deletevideoidform" method="post">
+    <input type="hidden" name="hiddencourseid" id="hiddencourseid" value="{{course._id}}">
+</form>
 
 <footer class="bg-light-gray footer-transform-padding">
     <div class="container">
@@ -276,6 +364,37 @@
     </div>
 </footer>
 
+<script>
+
+    document.addEventListener('DOMContentLoaded', function(event){
+
+        var idvideo;
+        var student;
+        var deleteForm = document.forms['deletevideoidform']
+        var btndeletevideo = document.getElementById('btndelete-video');
+        var idcourse = document.getElementById('courseid').value;
+        $('#deletevideoModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            idvideo = button.data('idvideo') // Extract info from data-* attributes
+        })
+
+        $('#modalupdatecomplete').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            student = button.data('student') // Extract info from data-* attributes
+            var inputstudent = document.getElementById('completestudent');
+            inputstudent.value = student;
+            document.getElementById('completestudenthidden').value = student;
+        })
+        
+        btndeletevideo.onclick = function(){
+            deleteForm.action = '/coursemanagement/'+idvideo+'?_method=DELETE';
+            deleteForm.submit();
+        }
+
+
+    })
+ 
+</script>
 
 <!-- JavaScript -->
 <script src="../vendor\js\bundle.min.js"></script>

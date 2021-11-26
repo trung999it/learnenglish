@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+// const port = 3000
 const morgan = require('morgan')
 const handlebars  = require('express-handlebars');
 const path = require('path');
@@ -11,7 +11,22 @@ const db = require('./config/db')
 var flash = require('req-flash');
 var session = require('express-session')
 var cookieParser = require('cookie-parser')
+const { v4: uuidv4 } = require("uuid");
 
+const server = require("http").Server(app);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: '*'
+  }
+});
+
+
+const { ExpressPeerServer } = require("peer");
+const peerServer = ExpressPeerServer(server, {
+  debug: true,
+});
+
+app.use("/peerjs", peerServer);
 
 app.use(methodOverride('_method'))
 
@@ -29,7 +44,6 @@ db.connect();
 
 
 app.use(express.static(path.join( __dirname, 'public')))
-//app.use("/public", express.static(__dirname + '/public'));
 app.use(morgan('combined'))
 app.use(express.urlencoded({
   extended:true
@@ -43,10 +57,22 @@ app.set('views', path.join( __dirname, 'resources','views'))
 
 route(app);
 
+io.on("connection", (socket) => {
+  socket.on("join-room", (roomId, userId, userName) => {
+    socket.join(roomId);
+    socket.to(roomId).emit("user-connected", userId);
+    socket.on("message", (message) => {
+      io.to(roomId).emit("createMessage", message, userName);
+    });
+    socket.on('disconnect', () => {
+      socket.to(roomId).emit('user-disconnected', userId)
+    })
+  });
+});
 
 
+server.listen(process.env.PORT || 3030);
 
-
-app.listen(port, () => {
-  console.log(`app listening at http://localhost:${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`app listening at http://localhost:${port}`)
+// })

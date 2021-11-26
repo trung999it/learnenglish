@@ -1,0 +1,41 @@
+<div class="container-account">
+    <div class="left-container-account">
+        {{#if avatar}}
+            <img src="image/default-avatar.png" alt="avatar" class="avatar-account">
+        {{else}}
+            <img class="avatar-account" src="{{img}}" alt="avatar">  
+        {{/if}}
+        
+        <h4>{{firstname}} {{lastname}}</h4>
+        <p>{{email}}</p>
+         <ul>
+             <li><a href="/account">My Info</a></li>
+             {{#if teacher}}
+             <li><a href="/aboutcreatecourse">How to create course?</a></li>
+             <li><a href="/coursemanagement">Course Management</a></li>
+             {{else}}
+            <li><a href="/mycourse">My Course</a></li>
+             {{/if}}
+             <li><a href="/changepassword">Change Password</a></li>
+             <li><a href="/updateavatar">Change Avatar</a></li>
+         </ul>
+    </div>
+
+    <div class="right-container-course-management">
+        <h2>My Course</h2>
+        <div class="list-course-teacher">
+          {{#each course}}
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{this.courseimage}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title" >{{this.coursename}}</h5>
+              <p>{{this.author}}</p>
+              <p class="card-text">{{this.description}}</p>
+              <a href="/mycourse/{{this.listvideo.0.idvideo}}" class="btn btn-primary">My Class</a>
+            </div>
+            </div>
+          {{/each}}
+        </div>
+    </div>
+</div>
+

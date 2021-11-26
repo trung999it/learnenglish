@@ -8,6 +8,27 @@ var fs = require('fs')
 const upload = multer({ dest: 'uploads/' })
 class CreateCourseControler {
 
+
+    updateresult(req,res,next){
+        var courseid = req.body.completecourseid;
+        var student = req.body.completestudenthidden;
+        var result = req.body.completemenu;
+        Course.update({'_id': courseid,'member.student': student}, {'$set':{'member.$.complete':result }})
+        .then(()=> res.redirect('back'))
+        .catch(next)
+    }
+
+
+    destroy(req,res,next){
+        var courseid = req.body.hiddencourseid;
+        var id_video = req.params.idvideo;
+        Course.update({'_id': courseid}, {$pull: {listvideo:{idvideo: id_video }}})
+        .then(()=> res.redirect('back'))
+        .catch(next)
+    }
+
+
+
     addvideo(req,res,next){
         var courseid = req.body.courseid;
         var videotitle = req.body.videotitle;
