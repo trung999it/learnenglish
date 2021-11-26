@@ -119,6 +119,7 @@
                         <th>Author</th>						
                         <th>Status</th>
                         <th>Detail</th>
+                        <th>Change Status</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -129,7 +130,8 @@
                             <td>{{this.author}}</td>
                             <td>{{this.blogstatus}}</td>
                             <td><a href="/blog/{{this._id}}"><button class="btn btn-outline-secondary" id="btndetailblog">Detail</button></a></td>
-                            <td><button class="btn btn-outline-danger" id="btndeleteblog">Delete</button></td>
+                            <td><button class="btn btn-outline-primary" id="btnchangestatus" data-toggle="modal" data-target="#modalchangestatus" data-idblogchange="{{this._id}}">Change</button></td>
+                            <td><button class="btn btn-outline-danger" id="btndeleteblog" data-toggle="modal" data-target="#modaldeleteblog" data-idblog="{{this._id}}">Delete</button></td>
                         </tr>
                     {{/each}}
                 </tbody>
@@ -138,9 +140,86 @@
     </div>
 </div>
 
+<div class="modal fade" id="modaldeleteblog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Blog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/blogmanagement" method="post">
+      <div class="modal-body">
+        Are you sure?
+        <input type="hidden" name="idblogdelete" id="idblogdelete" value="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalchangestatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change Blog Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/blogmanagement/changestatus" method="post">
+      <div class="modal-body">
+        <input type="hidden" name="idblogchange" id="idblogchange" value="">
+        <select class="form-select" id="statusblog" name="statusblog" aria-label="Default select example">
+            <option value="working">working</option>
+            <option value="report">report</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 
+
+
+
+
+
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function(event){
+
+        var idblog;
+        var idblogchange;
+        $('#modaldeleteblog').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            idblog = button.data('idblog') // Extract info from data-* attributes
+            document.getElementById('idblogdelete').value = idblog;
+        })
+
+        $('#modalchangestatus').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            idblogchange = button.data('idblogchange') // Extract info from data-* attributes
+            document.getElementById('idblogchange').value = idblogchange;
+        })
+
+    })
+ 
+</script>
 
 
 

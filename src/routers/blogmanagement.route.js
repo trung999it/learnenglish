@@ -6,6 +6,10 @@ var fs = require('fs')
 const upload = multer({ dest: 'uploads/' })
 const blogmanagement = require('../app/controllers/blogmanagementcontroler')
 
+router.post('/changestatus' , blogmanagement.chanestatus)
+
+router.post('/', blogmanagement.deleteblog)
+
 router.get('/', blogmanagement.index)
 
 module.exports = router;

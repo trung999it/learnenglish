@@ -10,6 +10,14 @@ const Blog = require('../models/Blog')
 class BlogControler {
 
 
+    report(req,res,next){
+        var idblog = req.params.id;
+        Blog.findOneAndUpdate({'_id': idblog}, {blogstatus:'report'} , {upsert: true}, function(err, doc) {
+            if (err) return res.send(500, {error: err});
+            return res.redirect('back');
+        });
+    }
+
 
     addcomment(req,res,next){
         var idblog = req.params.id;
